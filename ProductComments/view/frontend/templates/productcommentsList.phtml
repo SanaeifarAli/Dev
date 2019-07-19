@@ -3,15 +3,21 @@
 ?>
 <table>
     <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Datee</td>
+        <td>Id</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Comment</td>
+        <td>Date</td>
     </tr>
     <?php foreach($block->getItems() as $item): ?>
         <tr>
             <td><?php echo $item->getId(); ?></td>
-            <td><?php echo $item->getName(); ?></td>
-            <td><?php echo $item->getDate(); ?></td>
+            <td><?php echo $item->getFirst_Name(); ?></td>
+            <td><?php echo $item->getLast_Name(); ?></td>
+            <td><?php echo $item->getEmail(); ?></td>
+            <td><?php echo $item->getComment(); ?></td>
+            <td><?php echo $item->getComment_Date(); ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

@@ -32,6 +32,6 @@ class ProductCommentsBlock extends Template
      */
     public function getItems()
     {
-        return $this->collectionFactory->create()->get;
+        return $this->collectionFactory->create();
     }
 }
