@@ -1,23 +1,30 @@
 <?php
 /** @var \Dev\ProductComments\Block\ProductCommentsBlock $block */
 ?>
+<style>
+    table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+    td, th {  border: 3px solid #dddddd;  text-align: left;  padding: 8px;  }
+    tr:nth-child(even) { background-color: #dddddd; }
+    .post-id{width:2%} .post-name{width:30%}
+
+</style>
 <table>
     <tr>
-        <td>Id</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Email</td>
-        <td>Comment</td>
-        <td>Date</td>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Comment</th>
+        <th>Date</th>
     </tr>
     <?php foreach($block->getItems() as $item): ?>
         <tr>
-            <td><?php echo $item->getId(); ?></td>
-            <td><?php echo $item->getFirst_Name(); ?></td>
-            <td><?php echo $item->getLast_Name(); ?></td>
+            <td><?php echo $item->getproduct_comments_id(); ?></td>
+            <td><?php echo $item->getfirst_name(); ?></td>
+            <td><?php echo $item->getlast_name(); ?></td>
             <td><?php echo $item->getEmail(); ?></td>
             <td><?php echo $item->getComment(); ?></td>
-            <td><?php echo $item->getComment_Date(); ?></td>
+            <td><?php echo $item->getComment_date(); ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
