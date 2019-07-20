@@ -1,9 +1,23 @@
 <?php
 /** @var \Dev\ProductComments\Block\ProductCommentsBlock $block */
+
+
+//for using anywhere
+//$myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Dev\ProductComments\Block\CategoriesBlock');
+
+if ($currentProduct = $block->getCurrentProduct()) {
+    echo $currentProduct->getId() . '<br />';
+    //echo $currentProduct->getName() . '<br />';
+    //echo $currentProduct->getSku() . '<br />';
+    //echo $currentProduct->getFinalPrice() . '<br />';
+    //echo $currentProduct->getProductUrl() . '<br />';
+    //print_r ($currentProduct->getCategoryIds()) . '<br />';
+}
+
 ?>
 <style>
     table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
-    td, th {  border: 3px solid #dddddd;  text-align: left;  padding: 8px;  }
+    td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
     tr:nth-child(even) { background-color: #dddddd; }
     .post-id{width:2%} .post-name{width:30%}
 

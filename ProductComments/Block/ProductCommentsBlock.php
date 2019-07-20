@@ -9,7 +9,7 @@ class ProductCommentsBlock extends Template
 {
 
     private $collectionFactory;
-
+    protected $_registry;
     /**
      * ProductCommentsBlock constructor.
      * @param Template\Context $context
@@ -18,13 +18,24 @@ class ProductCommentsBlock extends Template
      */
     public function __construct(Template\Context $context,
                                 CollectionFactory $collectionFactory,
-        array $data = []
+                                \Magento\Framework\Registry $registry,
+                                array $data = []
     ) {
         $this->collectionFactory = $collectionFactory;
+        $this->_registry = $registry;
         parent::__construct(
             $context,
             $data
         );
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getCurrentProduct()
+    {
+        return $this->_registry->registry('current_product');
     }
 
     /**
