@@ -45,4 +45,12 @@ class ProductCommentsBlock extends Template
     {
         return $this->collectionFactory->create();
     }
+
+    /**
+     * @return string
+     */
+    public function getFormAction()
+    {
+        return 'productcomments/index/save';
+    }
 }
