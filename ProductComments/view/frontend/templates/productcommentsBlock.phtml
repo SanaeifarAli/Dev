@@ -5,12 +5,15 @@
 //for using anywhere
 //$myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Dev\ProductComments\Block\CategoriesBlock');
 
-//echo $block->getCurrentProduct()->getId(). '<br />';
-//echo $currentProduct->getName() . '<br />';
-//echo $currentProduct->getSku() . '<br />';
-//echo $currentProduct->getFinalPrice() . '<br />';
-//echo $currentProduct->getProductUrl() . '<br />';
-//print_r ($currentProduct->getCategoryIds()) . '<br />';
+$product=$block->getCurrentProduct();
+$productName = $product->getName();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->create('Magento\Catalog\Model\Product')->load($product->getId());
+//echo 'Id='.$product->getId();
+//echo '<br>Price='.$product->getData('price');
+//echo '<br>Product Commenets='.$product->getData('product_comments').'.';
+if ($product->getData('product_comments')!='yes')
+    return;
 
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $objDate = $objectManager->create('Magento\Framework\Stdlib\DateTime\DateTime');
