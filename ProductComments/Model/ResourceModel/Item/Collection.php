@@ -8,7 +8,7 @@ class Collection extends AbstractCollection
     /**
      * @var string
      */
-    protected $_idFieldName = 'productcomments_id';
+    protected $_idFieldName = 'product_comments_id';
     /**
      * Define resource model
      * @return void

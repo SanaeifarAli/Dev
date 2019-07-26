@@ -36,4 +36,17 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
             $resourceModel
         );
     }
+    protected function _initSelect()
+    {
+        parent::_initSelect();
+
+        $this->getSelect()
+            ->columns('csi.value')
+            ->joinLeft(
+                ['csi' => $this->getTable('catalog_product_entity_varchar')],
+                'csi.entity_id = main_table.entity_id and attribute_id = 
+                (SELECT attribute_id FROM eav_attribute WHERE attribute_code = "name" AND entity_type_id = 4)',
+                []
+            );
+    }
 }

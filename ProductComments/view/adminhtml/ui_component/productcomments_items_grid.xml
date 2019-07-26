@@ -104,5 +104,11 @@
                 </item>
             </argument>
         </column>
+        <column name="value">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product Name</label>
+            </settings>
+        </column>
     </columns>
 </listing>
