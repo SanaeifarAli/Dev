@@ -1,6 +1,7 @@
 <?php
 namespace Dev\ProductComments\Setup;
 
+use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
@@ -64,6 +65,35 @@ class UpgradeSchema implements UpgradeSchemaInterface
             );
             $setup->getConnection()->createTable($table);
         }
+
+        if (version_compare($context->getVersion(), '1.0.1', '<')) {
+            $setup->getConnection()->addColumn(
+                $setup->getTable('product_comments'),
+                'status',
+                [
+                    'type' => Table::TYPE_TEXT,
+                    'size' => 12,
+                    'nullable' => false,
+                    'comment' => 'Approve Status'
+                ]
+            );
+        }
+
+        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+            $setup->getConnection()->changeColumn(
+                $setup->getTable('product_comments'),
+                'status',
+                'status',
+                [
+                    'type' => Table::TYPE_BOOLEAN,
+                    'size' => null,
+                    'default' => 0,
+                    'nullable' => false,
+                    'comment' => 'Approve Status'
+                ]
+            );
+        }
+
         $setup->endSetup();
     }
 }

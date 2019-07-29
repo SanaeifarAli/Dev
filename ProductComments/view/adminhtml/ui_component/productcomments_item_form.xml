@@ -5,30 +5,36 @@
             <item name="provider" xsi:type="string">productcomments_item_form.productcomments_item_form_data_source</item>
             <item name="deps" xsi:type="string">productcomments_item_form.productcomments_item_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">General</item>
+
+        <item name="label" xsi:type="string" translate="true">Product Comments Form</item>
+        <!--
         <item name="layout" xsi:type="array">
             <item name="type" xsi:type="string">tabs</item>
-            <item name="navContainerName" xsi:type="string">left</item>
         </item>
+        -->
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">product_comments_form</item>
+        </item>
+
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+
         <item name="buttons" xsi:type="array">
-            <item name="save" xsi:type="array">
-                <item name="name" xsi:type="string">save</item>
-                <item name="label" xsi:type="string" translate="true">Save</item>
-                <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/save</item>
-            </item>
+            <item name="back" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\DeleteButton</item>
+            <item name="save" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\SaveButton</item>
         </item>
     </argument>
+
     <dataSource name="productcomments_item_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Dev\ProductComments\Ui\DataProvider</argument>
+            <argument name="class" xsi:type="string">Dev\ProductComments\Model\Item\DataProvider</argument>
             <argument name="name" xsi:type="string">productcomments_item_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">product_comments_id</argument>
             <argument name="requestFieldName" xsi:type="string">product_comments_id</argument>
-            <argument name="collectionFactory" xsi:type="object">Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="productcomments/item/save"/>
+                    <item name="submit_url" xsi:type="url" path="productcomments/item/save" />
                 </item>
             </argument>
         </argument>
@@ -38,54 +44,36 @@
             </item>
         </argument>
     </dataSource>
+
     <fieldset name="general">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">General</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Comment Fieldset</item>
             </item>
         </argument>
-        <field name="first_name">
+
+        <field name="product_comments_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">First Name</item>
+                    <item name="visible" xsi:type="boolean">false</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                    <item name="source" xsi:type="string">item</item>
                 </item>
             </argument>
         </field>
-        <field name="last_name">
+
+        <field name="status">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Dev\ProductComments\Model\Item\Source\Status</item>
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Last Name</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="email">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Email</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
-                </item>
-            </argument>
-        </field>
-        <field name="comment">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Comment</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="default" xsi:type="string">0</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>

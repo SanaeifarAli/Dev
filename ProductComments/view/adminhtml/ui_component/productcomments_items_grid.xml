@@ -104,11 +104,29 @@
                 </item>
             </argument>
         </column>
-        <column name="value">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Product Name</label>
-            </settings>
+        <column name="entity_id" class="Dev\ProductComments\Ui\Component\Grid\Column\ColumnRender">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product Name</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                </item>
+            </argument>
         </column>
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Dev\ProductComments\Ui\Component\Grid\Column\GridActions">
+            <settings>
+                <indexField>product_comments_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
