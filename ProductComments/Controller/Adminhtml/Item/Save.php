@@ -7,7 +7,7 @@ class Save extends \Magento\Backend\App\Action
     const ADMIN_RESOURCE = 'Index';
 
     protected $resultPageFactory;
-    protected $contactFactory;
+    protected $itemFactory;
 
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -16,7 +16,7 @@ class Save extends \Magento\Backend\App\Action
     )
     {
         $this->resultPageFactory = $resultPageFactory;
-        $this->contactFactory = $itemFactory;
+        $this->itemFactory = $itemFactory;
         parent::__construct($context);
     }
 
@@ -27,27 +27,44 @@ class Save extends \Magento\Backend\App\Action
 
         if($data)
         {
-            try{
+            try {
                 $id = $data['product_comments_id'];
 
-                $comment = $this->contactFactory->create()->load($id);
+                $comment = $this->itemFactory->create()->load($id);
 
-                $data = array_filter($data, function($value) {return $value !== ''; });
+                $data = array_filter($data, function ($value) {
+                    return $value !== '';
+                });
 
                 $comment->setData($data);
                 $comment->save();
                 $this->messageManager->addSuccess(__('Successfully saved the item.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
-                return $resultRedirect->setPath('*/index/index');
+
+                if ($this->getRequest()->getParam('back')) {
+                    return $resultRedirect->setPath('*/*/edit', ['product_comments_id' => $comment->getId(), '_current' => true]);
+                }
+                else{
+                    return $resultRedirect->setPath('*/index/index');
+                }
             }
             catch(\Exception $d)
             {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addError($d->getMessage());
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData($data);
-                return $resultRedirect->setPath('*/*/edit', ['id' => $contact->getId()]);
+                return $resultRedirect->setPath('*/*/edit', ['product_comments_id' => $comment->getId()]);
             }
         }
 
-        return $resultRedirect->setPath('*/index/index');
+
+
+        //if ($this->getRequest()->getParam('back')) {
+            return $resultRedirect->setPath('*/*/edit', ['product_comments_id' => $comment->getId(), '_current' => true]);
+        //}
+        //else{
+        //    return $resultRedirect->setPath('*/index/index');
+        //}
+
+        //return $resultRedirect->setPath('*/index/index');
     }
 }

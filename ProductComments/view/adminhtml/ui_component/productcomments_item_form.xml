@@ -22,6 +22,7 @@
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\BackButton</item>
             <item name="delete" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\DeleteButton</item>
+            <item name="save_and_continue" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\SaveAndContinueButton</item>
             <item name="save" xsi:type="string">Dev\ProductComments\Block\Adminhtml\FormButtons\Edit\SaveButton</item>
         </item>
     </argument>
@@ -64,6 +65,94 @@
             </argument>
         </field>
 
+        <field name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Dev\ProductComments\Model\Item\Source\Products</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product Name</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                    <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                    <item name="dataScope" xsi:type="string">entity_id</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">true</item>
+                    <item name="chipsEnabled" xsi:type="boolean">true</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="listens" xsi:type="array">
+                        <item name="newOption" xsi:type="string">toggleOptionSelected</item>
+                    </item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="first_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">First Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="last_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Last Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Email</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="comment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Comment</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
         <field name="status">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Dev\ProductComments\Model\Item\Source\Status</item>
@@ -80,5 +169,7 @@
                 </item>
             </argument>
         </field>
+
+
     </fieldset>
 </form>
