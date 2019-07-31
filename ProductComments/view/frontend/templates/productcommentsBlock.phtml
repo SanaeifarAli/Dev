@@ -9,9 +9,7 @@ $product=$block->getCurrentProduct();
 $productName = $product->getName();
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $product = $objectManager->create('Magento\Catalog\Model\Product')->load($product->getId());
-//echo 'Id='.$product->getId();
-//echo '<br>Price='.$product->getData('price');
-//echo '<br>Product Commenets='.$product->getData('product_comments').'.';
+
 if ($product->getData('product_comments')!='yes')
     return;
 

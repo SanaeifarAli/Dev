@@ -2,10 +2,15 @@
 namespace Dev\ProductComments\Block\Adminhtml\FormButtons\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
-use Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Generic;
 
-class SaveButton extends Generic implements ButtonProviderInterface
+/**
+ * Class SaveButton
+ */
+class SaveButton extends GenericButton implements ButtonProviderInterface
 {
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         return [
@@ -15,13 +20,7 @@ class SaveButton extends Generic implements ButtonProviderInterface
                 'mage-init' => ['button' => ['event' => 'save']],
                 'form-role' => 'save',
             ],
-            //'on_click' => sprintf("location.href= '%s';", $this->getSaveUrl()),
-            'sort_order' => 90
+            'sort_order' => 90,
         ];
-    }
-
-    public function getSaveUrl()
-    {
-        return $this->getUrl('*/*/save', []) ;
     }
 }

@@ -7,7 +7,7 @@ use Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Generic;
 /**
  * Class SaveAndContinueButton
  */
-class SaveAndContinueButton extends Generic implements ButtonProviderInterface
+class SaveAndContinueButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * @return array

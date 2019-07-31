@@ -2,29 +2,36 @@
 namespace Dev\ProductComments\Block\Adminhtml\FormButtons\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
-use Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Generic;
 
-class DeleteButton extends Generic implements ButtonProviderInterface
+/**
+ * Class DeleteButton
+ */
+class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
-        return [
-            'label' => __('Delete Comment'),
-            'on_click' => 'deleteConfirm(\'' . __('Are you sure you want to delete this comment ?') . '\', \'' . $this->getDeleteUrl() . '\')',
-            'class' => 'delete',
-            'sort_order' => 20
-        ];
+        $data = [];
+        if ($this->getId()) {
+            $data = [
+                'label' => __('Delete Comment'),
+                'class' => 'delete',
+                'on_click' => 'deleteConfirm(\''
+                    . __('Are you sure you want to delete this contact ?')
+                    . '\', \'' . $this->getDeleteUrl() . '\')',
+                'sort_order' => 20,
+            ];
+        }
+        return $data;
     }
 
+    /**
+     * @return string
+     */
     public function getDeleteUrl()
     {
-        $urlInterface = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\UrlInterface');
-        $url = $urlInterface->getCurrentUrl();
-
-        $parts = explode('/', parse_url($url, PHP_URL_PATH));
-
-        $id = $parts[6];
-
-        return $this->getUrl('*/*/delete', ['id' => $id]);
+        return $this->getUrl('*/*/delete', ['pfay_contacts_id' => $this->getId()]);
     }
 }

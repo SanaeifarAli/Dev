@@ -102,7 +102,7 @@
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">item</item>
                     <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
+                      <!--  <item name="required-entry" xsi:type="boolean">true</item>-->
                     </item>
                 </item>
             </argument>
@@ -133,6 +133,7 @@
                     <item name="source" xsi:type="string">item</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-email" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>
@@ -145,6 +146,22 @@
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="comment_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Comment Date</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="disable" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">item</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>

@@ -4,9 +4,12 @@ namespace Dev\ProductComments\Controller\Index;
 
 use Magento\Framework\Controller\ResultFactory;
 use Dev\ProductComments\Model\ItemFactory;
+use Magento\Framework\App\Request\DataPersistorInterface;
 
 class Save extends \Magento\Framework\App\Action\Action
 {
+
+    protected $dataPersistor;
     private $itemFactory;
 
     /**
@@ -16,9 +19,11 @@ class Save extends \Magento\Framework\App\Action\Action
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
+        DataPersistorInterface $dataPersistor,
         ItemFactory $itemFactory
     ) {
         $this->itemFactory = $itemFactory;
+        $this->dataPersistor = $dataPersistor;
         parent::__construct($context);
     }
 
@@ -35,19 +40,29 @@ class Save extends \Magento\Framework\App\Action\Action
             //$last_name   = $post['last_name'];
             //$email   = $post['email'];
             //$comment   = $post['comment'];
-            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-            $objDate = $objectManager->create('Magento\Framework\Stdlib\DateTime\DateTime');
-            $_POST['comment_date'] ='2019/01/01 19:23:00'; //$objDate->gmtDate();
 
-            $this->itemFactory->create()
-                ->setData($this->getRequest()->getPostValue())
-                ->save();
-            $this->messageManager->addSuccessMessage('Your Comment Is Successfuly Saved!!!!!');
+            $post['comment_date'] ='2019/01/01 19:23:00'; //$objDate->gmtDate();
 
-            $resultRedirect = $this->resultRedirectFactory->create();
-            $resultRedirect->setRefererOrBaseUrl();
+            try {
+                $this->itemFactory->create()
+                    ->setData($this->getRequest()->getPostValue())
+                    ->save();
+                $this->messageManager->addSuccessMessage('Your Comment Is Successfuly Saved!!!!!');
+                $this->dataPersistor->clear('product_comments');
+                $resultRedirect = $this->resultRedirectFactory->create();
+                $resultRedirect->setRefererOrBaseUrl();
 
-            return $resultRedirect;
+                return $resultRedirect;
+
+            }catch(\Exception $e){
+                $this->messageManager->addError($e->getMessage());
+
+                $this->dataPersistor->set('product_comments', $this->getRequest()->getPostValue());
+
+                $resultRedirect = $this->resultRedirectFactory->create();
+                $resultRedirect->setRefererOrBaseUrl();
+                return $resultRedirect;
+            }
             //return $this->resultRedirectFactory->create()->setPath('/');
         }
     }
