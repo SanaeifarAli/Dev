@@ -76,17 +76,20 @@ S.O.L.I.D in Magento - http://www.dckap.com/blog/why-should-every-developer-foll
      
 Your best friend in this journey - https://devdocs.magento.com/
 
+## Setup
+- Magento 2.2.6 Open Source or Commerce edition is required
+- Go to folder 'app/code' in terminal
+- Run command 'git clone https://github.com/SanaeifarAli/Dev.git'
+- Check that folder 'app/code/Dev/ProductComments' has been correctly created
+- Run command 'magento setup:upgrade'
 
 ## Usage
 
 **Frontend**
 - http://yourDomain/productcomments
 
-**CRUD**
-- http://yourDomain/rest/V1/signup
-- http://yourDomain/rest/V1/signupCreate
-- http://yourDomain/rest/V1/signupUpdate
-- http://yourDomain/rest/V1/signupDelete
+** ... **
+- ...
 
 **Admin**
 - http://yourDomain/admin/productcomments
