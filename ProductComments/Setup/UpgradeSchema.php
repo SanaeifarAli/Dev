@@ -94,6 +94,38 @@ class UpgradeSchema implements UpgradeSchemaInterface
             );
         }
 
+        if (version_compare($context->getVersion(), '1.0.3', '<')) {
+            $setup->getConnection()->addColumn(
+                $setup->getTable('product_comments'),
+                'created_at',
+                [
+                    'type' => Table::TYPE_TIMESTAMP,
+                    'size' => null,
+                    'nullable' => false,
+                    'default' => Table::TIMESTAMP_INIT,
+                    'comment' => 'Created At'
+                ]
+            );
+            $setup->getConnection()->addColumn(
+                $setup->getTable('product_comments'),
+                'created_at',
+                [
+                    'type' => Table::TYPE_TIMESTAMP,
+                    'size' => null,
+                    'nullable' => false,
+                    'default' => Table::TIMESTAMP_INIT,
+                    'comment' => 'Created At'
+                ]
+            );
+        }
+
+        if (version_compare($context->getVersion(), '1.0.4', '<')) {
+            $setup->getConnection()->dropColumn(
+                $setup->getTable('product_comments'),
+                'comment_date'
+            );
+        }
+
         $setup->endSetup();
     }
 }

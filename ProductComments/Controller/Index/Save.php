@@ -35,14 +35,6 @@ class Save extends \Magento\Framework\App\Action\Action
         $post = (array) $this->getRequest()->getPost();
 
         if (!empty($post)) {
-            //$entity_id   = $post['entity_id'];
-            //$first_name   = $post['first_name'];
-            //$last_name   = $post['last_name'];
-            //$email   = $post['email'];
-            //$comment   = $post['comment'];
-
-            $post['comment_date'] ='2019/01/01 19:23:00'; //$objDate->gmtDate();
-
             try {
                 $this->itemFactory->create()
                     ->setData($this->getRequest()->getPostValue())
