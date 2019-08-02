@@ -58,6 +58,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->dataPersistor->clear('product_comments');
         }
 
+
         return $this->_loadedData;
     }
 }

@@ -42,7 +42,7 @@ class ProductCommentsBlock extends Template
      */
     public function getItems()
     {
-        return $this->collectionFactory->create();
+        return $this->collectionFactory->create()->addFieldToFilter('status', '1');
     }
 
     /**
