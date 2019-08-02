@@ -8,9 +8,6 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-/**
- * Class PageActions
- */
 class GridActions extends Column
 {
     /** Url path */

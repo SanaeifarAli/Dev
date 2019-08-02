@@ -2,7 +2,6 @@
 namespace Dev\ProductComments\Model\Item;
 
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory;
-use Dev\ProductComments\Model\Item;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
@@ -11,6 +10,16 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $_loadedData;
     protected $dataPersistor;
 
+    /**
+     * DataProvider constructor.
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param CollectionFactory $contactCollectionFactory
+     * @param DataPersistorInterface $dataPersistor
+     * @param array $meta
+     * @param array $data
+     */
     public function __construct(
         $name,
         $primaryFieldName,
@@ -25,6 +34,9 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
+    /**
+     * @return array
+     */
     public function getData()
     {
         if(isset($this->_loadedData)) {

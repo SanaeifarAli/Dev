@@ -8,6 +8,11 @@ class Edit extends \Magento\Backend\App\Action
 
     protected $resultPageFactory;
 
+    /**
+     * Edit constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory)
@@ -16,6 +21,9 @@ class Edit extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
         return $this->resultPageFactory->create();

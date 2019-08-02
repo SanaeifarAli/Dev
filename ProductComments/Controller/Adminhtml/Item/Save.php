@@ -1,5 +1,6 @@
 <?php
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
+
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 class Save extends \Magento\Backend\App\Action
@@ -11,6 +12,13 @@ class Save extends \Magento\Backend\App\Action
     protected $itemFactory;
     protected $dataPersistor;
 
+    /**
+     * Save constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Dev\ProductComments\Model\ItemFactory $itemFactory
+     * @param DataPersistorInterface $dataPersistor
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -24,6 +32,9 @@ class Save extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $resultRedirect = $this->resultRedirectFactory->create();

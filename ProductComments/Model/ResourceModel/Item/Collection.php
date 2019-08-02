@@ -1,6 +1,6 @@
 <?php
-
 namespace Dev\ProductComments\Model\ResourceModel\Item;
+
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection

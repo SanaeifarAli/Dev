@@ -19,7 +19,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                 'label' => __('Delete Comment'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\''
-                    . __('Are you sure you want to delete this contact ?')
+                    . __('Are you sure you want to delete this comment ?')
                     . '\', \'' . $this->getDeleteUrl() . '\')',
                 'sort_order' => 20,
             ];
@@ -32,6 +32,6 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/*/delete', ['pfay_contacts_id' => $this->getId()]);
+        return $this->getUrl('*/*/delete', ['product_comments_id' => $this->getId()]);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Dev\ProductComments\Ui;
 
 use Magento\Ui\DataProvider\AbstractDataProvider;
@@ -17,7 +16,6 @@ class DataProvider extends AbstractDataProvider
      * @param array $meta
      * @param array $data
      */
-    private $poolInterface;
     public function __construct(
         $name,
         $primaryFieldName,

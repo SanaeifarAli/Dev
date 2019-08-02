@@ -6,7 +6,6 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-
 class ColumnRender extends Column
 {
     protected $escaper;
@@ -14,7 +13,15 @@ class ColumnRender extends Column
     protected $systemStore;
     protected $productRepositoryInterface;
 
-
+    /**
+     * ColumnRender constructor.
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepositoryInterface
+     * @param Escaper $escaper
+     * @param array $components
+     * @param array $data
+     */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
@@ -29,10 +36,9 @@ class ColumnRender extends Column
     }
 
     /**
-     * Prepare Data Source
-     *
      * @param array $dataSource
      * @return array
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function prepareDataSource(array $dataSource)
     {

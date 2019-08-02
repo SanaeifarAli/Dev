@@ -2,7 +2,6 @@
 namespace Dev\ProductComments\Block\Adminhtml\FormButtons\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
-use Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Generic;
 
 /**
  * Class SaveAndContinueButton

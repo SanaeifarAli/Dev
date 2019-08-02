@@ -20,12 +20,4 @@ class Item extends AbstractModel
     {
         return [self::STATUS_APPROVED => __('Approved'), self::STATUS_NOTAPPROVED => __('Not Approved')];
     }
-
-  /*  public function _beforeSave()
-    {
-        // set current date if added at data is not defined
-        if (is_null($this->getCreatedAt())) {
-            $this->setCreatedAt($this->_date->gmtDate());
-        }
-    }*/
 }

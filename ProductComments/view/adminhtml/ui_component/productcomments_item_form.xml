@@ -7,11 +7,6 @@
         </item>
 
         <item name="label" xsi:type="string" translate="true">Product Comments Form</item>
-        <!--
-        <item name="layout" xsi:type="array">
-            <item name="type" xsi:type="string">tabs</item>
-        </item>
-        -->
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
             <item name="namespace" xsi:type="string">product_comments_form</item>

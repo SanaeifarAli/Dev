@@ -2,7 +2,6 @@
 namespace Dev\ProductComments\Block;
 
 use Magento\Framework\View\Element\Template;
-use Dev\ProductComments\Model\ResourceModel\Item\Collection;
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory;
 
 class ProductCommentsBlock extends Template

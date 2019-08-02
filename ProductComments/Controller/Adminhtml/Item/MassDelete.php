@@ -1,12 +1,13 @@
 <?php
-
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
-use Magento\Backend\App\Action;
 use Dev\ProductComments\Model\Item;
 
 class MassDelete extends \Magento\Backend\App\Action
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         $ids = $this->getRequest()->getParam('selected', []);

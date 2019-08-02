@@ -1,10 +1,6 @@
 <?php
 /** @var \Dev\ProductComments\Block\ProductCommentsBlock $block */
 
-
-//for using anywhere
-//$myBlock = \Magento\Framework\App\ObjectManager::getInstance()->get('Dev\ProductComments\Block\CategoriesBlock');
-
 $product=$block->getCurrentProduct();
 $productName = $product->getName();
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();

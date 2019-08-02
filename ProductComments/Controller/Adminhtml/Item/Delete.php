@@ -1,9 +1,6 @@
 <?php
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
-use Dev\ProductComments\Model\Item as Comment;
-
-
 class Delete extends \Magento\Backend\App\Action
 {
 
@@ -12,6 +9,12 @@ class Delete extends \Magento\Backend\App\Action
     protected $resultPageFactory;
     protected $itemFactory;
 
+    /**
+     * Delete constructor.
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Dev\ProductComments\Model\ItemFactory $itemFactory
+     */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -23,9 +26,12 @@ class Delete extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('id');
+        $id = $this->getRequest()->getParam('product_comments_id');
 
         $comment = $this->itemFactory->create()->load($id);
 
