@@ -4,7 +4,6 @@ namespace Dev\ProductComments\Model\Item\Source;
 class Products implements \Magento\Framework\Option\ArrayInterface
 {
     protected $productCollection;
-    protected $productRepository;
 
     /**
      * Products constructor.
@@ -12,11 +11,9 @@ class Products implements \Magento\Framework\Option\ArrayInterface
      * @param \Magento\Catalog\Model\ProductRepository $productRepository
      */
     public function __construct(
-        \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection,
-        \Magento\Catalog\Model\ProductRepository $productRepository
+        \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection
     ) {
         $this->productCollection = $productCollection;
-        $this->productRepository = $productRepository;
     }
 
     /**
@@ -26,16 +23,15 @@ class Products implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
 
-        $products = $this->productCollection->load();
+        $products = $this->productCollection->addAttributeToSelect(array('*'));
         $options = [];
 
         /* @todo: add query to load selected options */
 
         foreach ($products as $product){
 
-
             $productId = $product->getId();
-            $productName = $this->productRepository->getById($productId)->getName();
+            $productName = $product->getName();
 
             $options[] = [
                 "value" => $productId,
