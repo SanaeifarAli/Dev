@@ -17,8 +17,8 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            'Dev\ProductComments\Model\Item',
-            'Dev\ProductComments\Model\ResourceModel\Item'
+            \Dev\ProductComments\Model\Item::class,
+            \Dev\ProductComments\Model\ResourceModel\Item::class
         );
     }
 }

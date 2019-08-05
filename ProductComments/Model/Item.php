@@ -16,7 +16,7 @@ class Item extends AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('Dev\ProductComments\Model\ResourceModel\Item');
+        $this->_init(\Dev\ProductComments\Model\ResourceModel\Item::class);
     }
     public function getAvailableStatuses()
     {

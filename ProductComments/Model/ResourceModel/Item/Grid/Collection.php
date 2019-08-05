@@ -32,7 +32,7 @@ class Collection extends SearchResult
         FetchStrategy $fetchStrategy,
         EventManager $eventManager,
         $mainTable = 'product_comments',
-        $resourceModel = 'Dev\ProductComments\Model\ResourceModel\Item'
+        $resourceModel = \Dev\ProductComments\Model\ResourceModel\Item::class
     ) {
 
         $this->entityFactory = $entityFactory;

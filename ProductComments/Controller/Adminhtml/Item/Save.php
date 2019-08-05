@@ -64,7 +64,7 @@ class Save extends Action
                 $comment->setData($data);
                 $comment->save();
                 $this->messageManager->addSuccessMessage(__('Successfully saved the item.'));
-                $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
+                $this->_objectManager->get(\Magento\Backend\Model\Session::class)->setFormData(false);
                 $this->dataPersistor->clear('product_comments');
 
                 if ($this->getRequest()->getParam('back')) {
@@ -77,7 +77,7 @@ class Save extends Action
                 }
             } catch (Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
-                $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData($data);
+                $this->_objectManager->get(\Magento\Backend\Model\Session::class)->setFormData($data);
                 $this->dataPersistor->set('product_comments', $data);
                 return $resultRedirect->setPath('*/*/edit', ['product_comments_id' => $comment->getId()]);
             }
