@@ -1,6 +1,9 @@
 <?php
 namespace Dev\ProductComments\Setup;
 
+use Dev\ProductComments\Model\Attribute\Backend\Material as MaterialBack;
+use Dev\ProductComments\Model\Attribute\Frontend\Material as MaterialFront;
+use Dev\ProductComments\Model\Attribute\Source\Material as MaterialSource;
 use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
@@ -48,9 +51,9 @@ class InstallData implements InstallDataInterface
                 'type' => 'varchar',
                 'label' => 'Product Comments',
                 'input' => 'select',
-                'source' => \Dev\ProductComments\Model\Attribute\Source\Material::class,
-                'frontend' => \Dev\ProductComments\Model\Attribute\Frontend\Material::class,
-                'backend' => \Dev\ProductComments\Model\Attribute\Backend\Material::class,
+                'source' => MaterialSource::class,
+                'frontend' => MaterialFront::class,
+                'backend' => MaterialBack::class,
                 'required' => false,
                 'sort_order' => 50,
                 'global' => ScopedAttributeInterface::SCOPE_GLOBAL,

@@ -2,15 +2,14 @@
 
 namespace Dev\ProductComments\Model\ResourceModel;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Exception\LocalizedException;
 
 class Item extends AbstractDb
 {
     /**
      * Initialize resource model
-     *
      * @return void
      */
     protected function _construct()

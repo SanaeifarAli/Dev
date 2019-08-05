@@ -1,9 +1,7 @@
 <?php
 namespace Dev\ProductComments\Model\Item\Source;
 
-use Magento\Catalog\Model\ProductRepository;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Option\ArrayInterface;
 
 class Products implements ArrayInterface
@@ -14,7 +12,6 @@ class Products implements ArrayInterface
      * Products constructor.
      *
      * @param Collection $productCollection
-     * @param ProductRepository                $productRepository
      */
     public function __construct(
         Collection $productCollection
@@ -24,7 +21,6 @@ class Products implements ArrayInterface
 
     /**
      * @return array
-     * @throws NoSuchEntityException
      */
     public function toOptionArray()
     {

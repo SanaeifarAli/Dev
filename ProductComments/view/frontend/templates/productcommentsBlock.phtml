@@ -1,14 +1,15 @@
 <?php
-/** @var ProductCommentsBlock $block */
+use Magento\Framework\App\ObjectManager;
 
 $product=$block->getCurrentProduct();
 $productName = $product->getName();
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$objectManager = ObjectManager::getInstance();
 $product = $objectManager->create(Magento\Catalog\Model\Product::class)->load($product->getId());
 
 if ($product->getData('product_comments')!='yes') {
     return;
 }
+
 ?>
 <form data-mage-init='{"validation":{}}'  action="<?= $validators = $block->escapeHtml($block->getFormAction()) ?>" method="post" class="review-form" id="product-comments">
     <fieldset class="fieldset review-fieldset" data-hasrequired="* Rquired Fields" >

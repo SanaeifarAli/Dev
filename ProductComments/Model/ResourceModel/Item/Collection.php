@@ -1,6 +1,8 @@
 <?php
 namespace Dev\ProductComments\Model\ResourceModel\Item;
 
+use Dev\ProductComments\Model\Item;
+use Dev\ProductComments\Model\ResourceModel\Item as ItemAlias;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
@@ -17,8 +19,8 @@ class Collection extends AbstractCollection
     protected function _construct()
     {
         $this->_init(
-            \Dev\ProductComments\Model\Item::class,
-            \Dev\ProductComments\Model\ResourceModel\Item::class
+            Item::class,
+            ItemAlias::class
         );
     }
 }

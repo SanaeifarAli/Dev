@@ -1,6 +1,7 @@
 <?php
 namespace Dev\ProductComments\Model\ResourceModel\Item\Grid;
 
+use Dev\ProductComments\Model\ResourceModel\Item;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Magento\Framework\Event\ManagerInterface as EventManager;
@@ -32,7 +33,7 @@ class Collection extends SearchResult
         FetchStrategy $fetchStrategy,
         EventManager $eventManager,
         $mainTable = 'product_comments',
-        $resourceModel = \Dev\ProductComments\Model\ResourceModel\Item::class
+        $resourceModel = Item::class
     ) {
 
         $this->entityFactory = $entityFactory;

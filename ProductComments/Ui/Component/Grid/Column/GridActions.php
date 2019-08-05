@@ -27,11 +27,6 @@ class GridActions extends Column
     private $editUrl;
 
     /**
-     * @var Escaper
-     */
-    private $escaper;
-
-    /**
      * @param ContextInterface   $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface       $urlBuilder
@@ -89,19 +84,5 @@ class GridActions extends Column
         }
 
         return $dataSource;
-    }
-
-    /**
-     * Get instance of escaper
-     *
-     * @return     Escaper
-     * @deprecated 101.0.7
-     */
-    private function getEscaper()
-    {
-        if (!$this->escaper) {
-            $this->escaper = ObjectManager::getInstance()->get(Escaper::class);
-        }
-        return $this->escaper;
     }
 }

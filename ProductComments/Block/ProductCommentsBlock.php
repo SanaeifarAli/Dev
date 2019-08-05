@@ -10,12 +10,14 @@ class ProductCommentsBlock extends Template
 {
     private $collectionFactory;
     protected $_registry;
+
     /**
      * ProductCommentsBlock constructor.
      *
-     * @param Template\Context  $context
+     * @param Template\Context $context
      * @param CollectionFactory $collectionFactory
-     * @param array             $data
+     * @param Registry $registry
+     * @param array $data
      */
     public function __construct(
         Template\Context $context,
@@ -32,7 +34,6 @@ class ProductCommentsBlock extends Template
     }
 
     /**
-     * @param $id
      * @return mixed
      */
     public function getCurrentProduct()

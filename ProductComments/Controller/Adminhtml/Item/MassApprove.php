@@ -26,7 +26,7 @@ class MassApprove extends Action
                 $comment->save();
             }
         }
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been approved.', count($ids)));
+        $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been approved.', count($ids)));
 
         $resultRedirect = $this->resultRedirectFactory->create();
         return $resultRedirect->setPath('*/index/index', ['_current' => true]);
