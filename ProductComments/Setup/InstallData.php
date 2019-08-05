@@ -1,6 +1,9 @@
 <?php
 namespace Dev\ProductComments\Setup;
 
+use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -22,7 +25,7 @@ class InstallData implements InstallDataInterface
      *
      * @param EavSetupFactory $eavSetupFactory
      */
-    public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory)
+    public function __construct(EavSetupFactory $eavSetupFactory)
     {
         $this->eavSetupFactory = $eavSetupFactory;
     }
@@ -38,19 +41,19 @@ class InstallData implements InstallDataInterface
     {
         $eavSetup = $this->eavSetupFactory->create();
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'product_comments',
             [
                 'group' => 'General',
                 'type' => 'varchar',
                 'label' => 'Product Comments',
                 'input' => 'select',
-                'source' => Dev\ProductComments\Model\Attribute\Source\Material::class,
-                'frontend' => Dev\ProductComments\Model\Attribute\Frontend\Material::class,
-                'backend' => Dev\ProductComments\Model\Attribute\Backend\Material::class,
+                'source' => 'Dev\ProductComments\Model\Attribute\Source\Material',
+                'frontend' => 'Dev\ProductComments\Model\Attribute\Frontend\Material',
+                'backend' => 'Dev\ProductComments\Model\Attribute\Backend\Material',
                 'required' => false,
                 'sort_order' => 50,
-                'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'is_used_in_grid' => false,
                 'is_visible_in_grid' => false,
                 'is_filterable_in_grid' => false,

@@ -1,7 +1,16 @@
 <?php
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
-class Delete extends \Magento\Backend\App\Action
+use Dev\ProductComments\Model\ItemFactory;
+use Exception;
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
+
+class Delete extends Action
 {
     const ADMIN_RESOURCE = 'Index';
 
@@ -10,15 +19,14 @@ class Delete extends \Magento\Backend\App\Action
 
     /**
      * Delete constructor.
-     *
-     * @param \Magento\Backend\App\Action\Context        $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Dev\ProductComments\Model\ItemFactory     $itemFactory
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param ItemFactory $itemFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Dev\ProductComments\Model\ItemFactory $itemFactory
+        Context $context,
+        PageFactory $resultPageFactory,
+        ItemFactory $itemFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->itemFactory = $itemFactory;
@@ -26,7 +34,7 @@ class Delete extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {
@@ -35,16 +43,16 @@ class Delete extends \Magento\Backend\App\Action
         $comment = $this->itemFactory->create()->load($id);
 
         if (!$comment) {
-            $this->messageManager->addError(__('Unable to process. please, try again.'));
+            $this->messageManager->addErrorMessage(__('Unable to process. please, try again.'));
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('*/index/index', ['_current' => true]);
         }
 
         try {
             $comment->delete();
-            $this->messageManager->addSuccess(__('Your comment has been deleted !'));
-        } catch (\Exception $e) {
-            $this->messageManager->addError(__('Error while trying to delete comment'));
+            $this->messageManager->addSuccessMessage(__('Your comment has been deleted !'));
+        } catch (Exception $e) {
+            $this->messageManager->addErrorMessage(__('Error while trying to delete comment'));
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('*/index/index', ['_current' => true]);
         }

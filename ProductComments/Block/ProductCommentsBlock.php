@@ -1,7 +1,9 @@
 <?php
 namespace Dev\ProductComments\Block;
 
+use Dev\ProductComments\Model\Item;
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template;
 
 class ProductCommentsBlock extends Template
@@ -18,7 +20,7 @@ class ProductCommentsBlock extends Template
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
-        \Magento\Framework\Registry $registry,
+        Registry $registry,
         array $data = []
     ) {
         $this->collectionFactory = $collectionFactory;
@@ -39,7 +41,7 @@ class ProductCommentsBlock extends Template
     }
 
     /**
-     * @return \Dev\ProductComments\Model\Item[]
+     * @return Item[]
      */
     public function getItems()
     {

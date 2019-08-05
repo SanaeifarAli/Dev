@@ -1,9 +1,17 @@
 <?php
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
+use Dev\ProductComments\Model\ItemFactory;
+use Exception;
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
 
-class Save extends \Magento\Backend\App\Action
+class Save extends Action
 {
     const ADMIN_RESOURCE = 'Index';
 
@@ -14,15 +22,15 @@ class Save extends \Magento\Backend\App\Action
     /**
      * Save constructor.
      *
-     * @param \Magento\Backend\App\Action\Context        $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Dev\ProductComments\Model\ItemFactory     $itemFactory
+     * @param Context        $context
+     * @param PageFactory $resultPageFactory
+     * @param ItemFactory     $itemFactory
      * @param DataPersistorInterface                     $dataPersistor
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Dev\ProductComments\Model\ItemFactory $itemFactory,
+        Context $context,
+        PageFactory $resultPageFactory,
+        ItemFactory $itemFactory,
         DataPersistorInterface $dataPersistor
     ) {
         $this->resultPageFactory = $resultPageFactory;
@@ -32,7 +40,7 @@ class Save extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {
@@ -55,8 +63,8 @@ class Save extends \Magento\Backend\App\Action
 
                 $comment->setData($data);
                 $comment->save();
-                $this->messageManager->addSuccess(__('Successfully saved the item.'));
-                $this->_objectManager->get(Magento\Backend\Model\Session::class)->setFormData(false);
+                $this->messageManager->addSuccessMessage(__('Successfully saved the item.'));
+                $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 $this->dataPersistor->clear('product_comments');
 
                 if ($this->getRequest()->getParam('back')) {
@@ -67,9 +75,9 @@ class Save extends \Magento\Backend\App\Action
                 } else {
                     return $resultRedirect->setPath('*/index/index');
                 }
-            } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
-                $this->_objectManager->get(oOMagento\Backend\Model\Session::class)->setFormData($data);
+            } catch (Exception $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
+                $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData($data);
                 $this->dataPersistor->set('product_comments', $data);
                 return $resultRedirect->setPath('*/*/edit', ['product_comments_id' => $comment->getId()]);
             }

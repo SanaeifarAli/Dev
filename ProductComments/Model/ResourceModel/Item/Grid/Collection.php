@@ -4,9 +4,11 @@ namespace Dev\ProductComments\Model\ResourceModel\Item\Grid;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Magento\Framework\Event\ManagerInterface as EventManager;
+use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface as Logger;
+use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
 
-class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
+class Collection extends SearchResult
 {
     private $entityFactory;
     private $logger;
@@ -22,7 +24,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
      * @param  EventManager  $eventManager
      * @param  string        $mainTable
      * @param  string        $resourceModel
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function __construct(
         EntityFactory $entityFactory,
@@ -30,7 +32,7 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         FetchStrategy $fetchStrategy,
         EventManager $eventManager,
         $mainTable = 'product_comments',
-        $resourceModel = Dev\ProductComments\Model\ResourceModel\Item::class
+        $resourceModel = 'Dev\ProductComments\Model\ResourceModel\Item'
     ) {
 
         $this->entityFactory = $entityFactory;

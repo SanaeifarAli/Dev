@@ -17,7 +17,7 @@ class GridActions extends Column
     const CMS_URL_PATH_DELETE = 'productcomments/item/delete';
 
     /**
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     protected $urlBuilder;
 
@@ -71,7 +71,8 @@ class GridActions extends Column
                         ),
                         'label' => __('Edit')
                     ];
-                    $title = $this->getEscaper()->escapeHtml($item['last_name']);
+                    //$title = $this->getEscaper()->escapeHtml($item['last_name']);
+                    $title = ObjectManager::getInstance()->get(Escaper::class)->escapeHtml($item['last_name']);
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(
                             self::CMS_URL_PATH_DELETE,
@@ -80,7 +81,7 @@ class GridActions extends Column
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete %1', $title),
-                            'message' => __('Are you sure you want to delete a %1 record?', $title)
+                            'message' => __('Are you sure you want to delete a %1 record...?', $title)
                         ]
                     ];
                 }

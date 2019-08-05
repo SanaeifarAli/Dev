@@ -1,25 +1,30 @@
 <?php
 namespace Dev\ProductComments\Model\Item\Source;
 
-class Products implements \Magento\Framework\Option\ArrayInterface
+use Magento\Catalog\Model\ProductRepository;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Option\ArrayInterface;
+
+class Products implements ArrayInterface
 {
     protected $productCollection;
 
     /**
      * Products constructor.
      *
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection
-     * @param \Magento\Catalog\Model\ProductRepository                $productRepository
+     * @param Collection $productCollection
+     * @param ProductRepository                $productRepository
      */
     public function __construct(
-        \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection
+        Collection $productCollection
     ) {
         $this->productCollection = $productCollection;
     }
 
     /**
      * @return array
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
     public function toOptionArray()
     {

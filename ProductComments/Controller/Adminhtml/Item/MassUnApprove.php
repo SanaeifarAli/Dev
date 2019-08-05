@@ -3,11 +3,15 @@
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
 use Dev\ProductComments\Model\Item;
+use Magento\Backend\App\Action;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 
-class MassUnApprove extends \Magento\Backend\App\Action
+class MassUnApprove extends Action
 {
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {

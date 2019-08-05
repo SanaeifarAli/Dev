@@ -1,7 +1,9 @@
 <?php
 namespace Dev\ProductComments\Model\Attribute\Source;
 
-class Material extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
+use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
+
+class Material extends AbstractSource
 {
     /**
      * Get all options

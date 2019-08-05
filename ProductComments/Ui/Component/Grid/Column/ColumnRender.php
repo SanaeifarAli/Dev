@@ -2,7 +2,9 @@
 
 namespace Dev\ProductComments\Ui\Component\Grid\Column;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Escaper;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -19,7 +21,7 @@ class ColumnRender extends Column
      *
      * @param ContextInterface                                $context
      * @param UiComponentFactory                              $uiComponentFactory
-     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepositoryInterface
+     * @param ProductRepositoryInterface                      $productRepositoryInterface
      * @param Escaper                                         $escaper
      * @param array                                           $components
      * @param array                                           $data
@@ -27,7 +29,7 @@ class ColumnRender extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        \Magento\Catalog\Api\ProductRepositoryInterface $productRepositoryInterface,
+        ProductRepositoryInterface $productRepositoryInterface,
         Escaper $escaper,
         array $components = [],
         array $data = []
@@ -40,7 +42,7 @@ class ColumnRender extends Column
     /**
      * @param array $dataSource
      * @return array
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
     public function prepareDataSource(array $dataSource)
     {

@@ -2,11 +2,15 @@
 namespace Dev\ProductComments\Controller\Adminhtml\Item;
 
 use Dev\ProductComments\Model\Item;
+use Magento\Backend\App\Action;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
 
-class MassDelete extends \Magento\Backend\App\Action
+class MassDelete extends Action
 {
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {
@@ -20,7 +24,7 @@ class MassDelete extends \Magento\Backend\App\Action
                 $comment->delete();
             }
         }
-        $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', count($ids)));
+        $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', count($ids)));
 
         $resultRedirect = $this->resultRedirectFactory->create();
         return $resultRedirect->setPath('*/index/index', ['_current' => true]);

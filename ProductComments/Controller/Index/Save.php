@@ -3,9 +3,18 @@
 namespace Dev\ProductComments\Controller\Index;
 
 use Dev\ProductComments\Model\ItemFactory;
+use Exception;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Store\Model\StoreManagerInterface;
 
-class Save extends \Magento\Framework\App\Action\Action
+class Save extends Action
 {
 
     /**
@@ -18,31 +27,31 @@ class Save extends \Magento\Framework\App\Action\Action
     private $itemFactory;
 
     /**
-     * @var \Magento\Framework\App\Request\Http
+     * @var Http
      */
     protected $_request;
     /**
-     * @var \Magento\Framework\Mail\Template\TransportBuilder
+     * @var TransportBuilder
      */
     protected $_transportBuilder;
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $_storeManager;
     /**
      * Save constructor.
      *
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param Context $context
      * @param DataPersistorInterface                $dataPersistor
      * @param ItemFactory                           $itemFactory
      */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
+        Context $context,
         DataPersistorInterface $dataPersistor,
         ItemFactory $itemFactory,
-        \Magento\Framework\App\Request\Http $request,
-        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
-        \Magento\Store\Model\StoreManagerInterface $storeManager
+        Http $request,
+        TransportBuilder $transportBuilder,
+        StoreManagerInterface $storeManager
     ) {
         $this->itemFactory = $itemFactory;
         $this->dataPersistor = $dataPersistor;
@@ -53,7 +62,7 @@ class Save extends \Magento\Framework\App\Action\Action
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|ResultInterface
      */
     public function execute()
     {
@@ -86,7 +95,7 @@ class Save extends \Magento\Framework\App\Action\Action
                 $resultRedirect->setRefererOrBaseUrl();
 
                 return $resultRedirect;
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->messageManager->addError($e->getMessage());
 
                 $this->dataPersistor->set('product_comments', $this->getRequest()->getPostValue());

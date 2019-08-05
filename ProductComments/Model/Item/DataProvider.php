@@ -3,8 +3,9 @@ namespace Dev\ProductComments\Model\Item;
 
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
     protected $collection;
     protected $_loadedData;

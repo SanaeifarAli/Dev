@@ -1,6 +1,10 @@
 <?php
 namespace Dev\ProductComments\Block\Adminhtml\FormButtons\Edit;
 
+use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\UrlInterface;
+
 /**
  * Class GenericButton
  */
@@ -9,26 +13,26 @@ class GenericButton
     /**
      * Url Builder
      *
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     protected $urlBuilder;
 
     /**
      * Registry
      *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $registry;
 
     /**
      * Constructor
      *
-     * @param \Magento\Backend\Block\Widget\Context $context
-     * @param \Magento\Framework\Registry           $registry
+     * @param Context $context
+     * @param Registry           $registry
      */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry
+        Context $context,
+        Registry $registry
     ) {
         $this->urlBuilder = $context->getUrlBuilder();
         $this->registry = $registry;
