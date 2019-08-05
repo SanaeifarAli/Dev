@@ -14,14 +14,14 @@
         <th>Comment</th>
         <th>Date</th>
     </tr>
-    <?php foreach($block->getItems() as $item): ?>
+    <?php foreach ($block->getItems() as $item) : ?>
         <tr>
-            <td><?php echo $item->getproduct_comments_id(); ?></td>
-            <td><?php echo $item->getfirst_name(); ?></td>
-            <td><?php echo $item->getlast_name(); ?></td>
-            <td><?php echo $item->getEmail(); ?></td>
-            <td><?php echo $item->getComment(); ?></td>
-            <td><?php echo $item->getCreatedAt(); ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getproduct_comments_id())) ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getfirst_name())) ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getlast_name())) ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getEmail())) ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getComment())) ?></td>
+            <td><?= $validators = $item->escapeHtml(json_encode($item->getCreatedAt())) ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

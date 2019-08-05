@@ -5,6 +5,7 @@ class Material extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
 {
     /**
      * Get all options
+     *
      * @return array
      */
     public function getAllOptions()
@@ -18,4 +19,3 @@ class Material extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
         return $this->_options;
     }
 }
-

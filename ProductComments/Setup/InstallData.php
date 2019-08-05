@@ -12,12 +12,14 @@ class InstallData implements InstallDataInterface
 {
     /**
      * Eav setup factory
+     *
      * @var EavSetupFactory
      */
     private $eavSetupFactory;
 
     /**
      * Init
+     *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory)
@@ -27,6 +29,7 @@ class InstallData implements InstallDataInterface
 
     /**
      * {@inheritdoc}
+     *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -42,9 +45,9 @@ class InstallData implements InstallDataInterface
                 'type' => 'varchar',
                 'label' => 'Product Comments',
                 'input' => 'select',
-                'source' => 'Dev\ProductComments\Model\Attribute\Source\Material',
-                'frontend' => 'Dev\ProductComments\Model\Attribute\Frontend\Material',
-                'backend' => 'Dev\ProductComments\Model\Attribute\Backend\Material',
+                'source' => Dev\ProductComments\Model\Attribute\Source\Material::class,
+                'frontend' => Dev\ProductComments\Model\Attribute\Frontend\Material::class,
+                'backend' => Dev\ProductComments\Model\Attribute\Backend\Material::class,
                 'required' => false,
                 'sort_order' => 50,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,

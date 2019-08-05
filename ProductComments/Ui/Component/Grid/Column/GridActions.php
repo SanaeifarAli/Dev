@@ -10,7 +10,9 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class GridActions extends Column
 {
-    /** Url path */
+    /**
+    * Url path
+    */
     const CMS_URL_PATH_EDIT = 'productcomments/item/edit';
     const CMS_URL_PATH_DELETE = 'productcomments/item/delete';
 
@@ -30,12 +32,12 @@ class GridActions extends Column
     private $escaper;
 
     /**
-     * @param ContextInterface $context
+     * @param ContextInterface   $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param UrlInterface $urlBuilder
-     * @param array $components
-     * @param array $data
-     * @param string $editUrl
+     * @param UrlInterface       $urlBuilder
+     * @param array              $components
+     * @param array              $data
+     * @param string             $editUrl
      */
     public function __construct(
         ContextInterface $context,
@@ -53,7 +55,7 @@ class GridActions extends Column
     /**
      * Prepare Data Source
      *
-     * @param array $dataSource
+     * @param  array $dataSource
      * @return array
      */
     public function prepareDataSource(array $dataSource)
@@ -63,12 +65,18 @@ class GridActions extends Column
                 $name = $this->getData('name');
                 if (isset($item['product_comments_id'])) {
                     $item[$name]['edit'] = [
-                        'href' => $this->urlBuilder->getUrl($this->editUrl, ['product_comments_id' => $item['product_comments_id']]),
+                        'href' => $this->urlBuilder->getUrl(
+                            $this->editUrl,
+                            ['product_comments_id' => $item['product_comments_id']]
+                        ),
                         'label' => __('Edit')
                     ];
                     $title = $this->getEscaper()->escapeHtml($item['last_name']);
                     $item[$name]['delete'] = [
-                        'href' => $this->urlBuilder->getUrl(self::CMS_URL_PATH_DELETE, ['product_comments_id' => $item['product_comments_id']]),
+                        'href' => $this->urlBuilder->getUrl(
+                            self::CMS_URL_PATH_DELETE,
+                            ['product_comments_id' => $item['product_comments_id']]
+                        ),
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete %1', $title),
@@ -84,7 +92,8 @@ class GridActions extends Column
 
     /**
      * Get instance of escaper
-     * @return Escaper
+     *
+     * @return     Escaper
      * @deprecated 101.0.7
      */
     private function getEscaper()

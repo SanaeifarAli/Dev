@@ -1,4 +1,5 @@
 <?php
+
 namespace Dev\ProductComments\Ui\Component\Grid\Column;
 
 use Magento\Framework\Escaper;
@@ -15,12 +16,13 @@ class ColumnRender extends Column
 
     /**
      * ColumnRender constructor.
-     * @param ContextInterface $context
-     * @param UiComponentFactory $uiComponentFactory
+     *
+     * @param ContextInterface                                $context
+     * @param UiComponentFactory                              $uiComponentFactory
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepositoryInterface
-     * @param Escaper $escaper
-     * @param array $components
-     * @param array $data
+     * @param Escaper                                         $escaper
+     * @param array                                           $components
+     * @param array                                           $data
      */
     public function __construct(
         ContextInterface $context,
@@ -44,15 +46,14 @@ class ColumnRender extends Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as $key => $items) {
-
                 $product = $this->productRepositoryInterface->getById($items["entity_id"]);
                 $dataSource['data']['items'][$key]['entity_id'] = $product->getName();
 
-                if ($items["status"])
+                if ($items["status"]) {
                     $dataSource['data']['items'][$key]['status'] = 'Approved';
-                else
+                } else {
                     $dataSource['data']['items'][$key]['status'] = 'Not Approved';
-
+                }
             }
         }
 

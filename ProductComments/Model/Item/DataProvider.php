@@ -12,13 +12,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * DataProvider constructor.
+     *
      * @param $name
      * @param $primaryFieldName
      * @param $requestFieldName
-     * @param CollectionFactory $contactCollectionFactory
+     * @param CollectionFactory      $contactCollectionFactory
      * @param DataPersistorInterface $dataPersistor
-     * @param array $meta
-     * @param array $data
+     * @param array                  $meta
+     * @param array                  $data
      */
     public function __construct(
         $name,
@@ -28,7 +29,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         DataPersistorInterface $dataPersistor,
         array $meta = [],
         array $data = []
-    ){
+    ) {
         $this->collection = $contactCollectionFactory->create();
         $this->dataPersistor = $dataPersistor;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
@@ -39,14 +40,13 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
-        if(isset($this->_loadedData)) {
+        if (isset($this->_loadedData)) {
             return $this->_loadedData;
         }
 
         $items = $this->collection->getItems();
 
-        foreach($items as $comment)
-        {
+        foreach ($items as $comment) {
             $this->_loadedData[$comment->getId()] = $comment->getData();
         }
 
@@ -57,7 +57,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->_loadedData[$items->getId()] = $items->getData();
             $this->dataPersistor->clear('product_comments');
         }
-
 
         return $this->_loadedData;
     }

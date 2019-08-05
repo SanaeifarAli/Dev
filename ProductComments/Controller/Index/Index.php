@@ -11,6 +11,6 @@ class Index extends Action
      */
     public function execute()
     {
-       return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }

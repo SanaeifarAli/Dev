@@ -7,8 +7,9 @@ class Products implements \Magento\Framework\Option\ArrayInterface
 
     /**
      * Products constructor.
+     *
      * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection
-     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     * @param \Magento\Catalog\Model\ProductRepository                $productRepository
      */
     public function __construct(
         \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection
@@ -22,14 +23,12 @@ class Products implements \Magento\Framework\Option\ArrayInterface
      */
     public function toOptionArray()
     {
-
-        $products = $this->productCollection->addAttributeToSelect(array('*'));
+        $products = $this->productCollection->addAttributeToSelect(['*']);
         $options = [];
 
         /* @todo: add query to load selected options */
 
-        foreach ($products as $product){
-
+        foreach ($products as $product) {
             $productId = $product->getId();
             $productName = $product->getName();
 

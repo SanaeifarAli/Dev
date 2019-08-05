@@ -1,24 +1,25 @@
 <?php
 namespace Dev\ProductComments\Block;
 
-use Magento\Framework\View\Element\Template;
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory;
+use Magento\Framework\View\Element\Template;
 
 class ProductCommentsBlock extends Template
 {
-
     private $collectionFactory;
     protected $_registry;
     /**
      * ProductCommentsBlock constructor.
-     * @param Template\Context $context
+     *
+     * @param Template\Context  $context
      * @param CollectionFactory $collectionFactory
-     * @param array $data
+     * @param array             $data
      */
-    public function __construct(Template\Context $context,
-                                CollectionFactory $collectionFactory,
-                                \Magento\Framework\Registry $registry,
-                                array $data = []
+    public function __construct(
+        Template\Context $context,
+        CollectionFactory $collectionFactory,
+        \Magento\Framework\Registry $registry,
+        array $data = []
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->_registry = $registry;

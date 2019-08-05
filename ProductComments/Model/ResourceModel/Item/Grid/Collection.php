@@ -6,17 +6,22 @@ use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Psr\Log\LoggerInterface as Logger;
 
-
 class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
 {
+    private $entityFactory;
+    private $logger;
+    private $fetchStrategy;
+    private $eventManager;
+
     /**
      * Collection constructor.
-     * @param EntityFactory $entityFactory
-     * @param Logger $logger
-     * @param FetchStrategy $fetchStrategy
-     * @param EventManager $eventManager
-     * @param string $mainTable
-     * @param string $resourceModel
+     *
+     * @param  EntityFactory $entityFactory
+     * @param  Logger        $logger
+     * @param  FetchStrategy $fetchStrategy
+     * @param  EventManager  $eventManager
+     * @param  string        $mainTable
+     * @param  string        $resourceModel
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
@@ -25,8 +30,14 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
         FetchStrategy $fetchStrategy,
         EventManager $eventManager,
         $mainTable = 'product_comments',
-        $resourceModel = 'Dev\ProductComments\Model\ResourceModel\Item'
-    ){
+        $resourceModel = Dev\ProductComments\Model\ResourceModel\Item::class
+    ) {
+
+        $this->entityFactory = $entityFactory;
+        $this->logger = $logger;
+        $this->fetchStrategy = $fetchStrategy;
+        $this->eventManager = $eventManager;
+
         parent::__construct(
             $entityFactory,
             $logger,

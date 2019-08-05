@@ -11,11 +11,14 @@ class Collection extends AbstractCollection
     protected $_idFieldName = 'product_comments_id';
     /**
      * Define resource model
+     *
      * @return void
      */
     protected function _construct()
     {
-        $this->_init('Dev\ProductComments\Model\Item',
-            'Dev\ProductComments\Model\ResourceModel\Item');
+        $this->_init(
+            Dev\ProductComments\Model\Item::class,
+            Dev\ProductComments\Model\ResourceModel\Item::class
+        );
     }
 }

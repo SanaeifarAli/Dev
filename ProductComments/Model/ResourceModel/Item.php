@@ -1,13 +1,15 @@
 <?php
 
 namespace Dev\ProductComments\Model\ResourceModel;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Item extends AbstractDb
 {
     /**
      * Initialize resource model
+     *
      * @return void
      */
     protected function _construct()
@@ -18,7 +20,7 @@ class Item extends AbstractDb
     protected function _beforeSave(\Magento\Framework\Model\AbstractModel $object)
     {
         $first_name=$object->getFirst_name();
-        if (strlen(trim($first_name))<2){
+        if (strlen(trim($first_name))<2) {
             throw new LocalizedException(__('First Name should have at least 2 characters!'));
         }
         return $this;

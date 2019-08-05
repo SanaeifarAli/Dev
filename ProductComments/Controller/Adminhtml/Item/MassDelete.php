@@ -13,7 +13,7 @@ class MassDelete extends \Magento\Backend\App\Action
         $ids = $this->getRequest()->getParam('selected', []);
         if (!is_array($ids) || !count($ids)) {
             $resultRedirect = $this->resultRedirectFactory->create();
-            return $resultRedirect->setPath('*/index/index', array('_current' => true));
+            return $resultRedirect->setPath('*/index/index', ['_current' => true]);
         }
         foreach ($ids as $id) {
             if ($comment = $this->_objectManager->create(Item::class)->load($id)) {
@@ -23,6 +23,6 @@ class MassDelete extends \Magento\Backend\App\Action
         $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', count($ids)));
 
         $resultRedirect = $this->resultRedirectFactory->create();
-        return $resultRedirect->setPath('*/index/index', array('_current' => true));
+        return $resultRedirect->setPath('*/index/index', ['_current' => true]);
     }
 }
