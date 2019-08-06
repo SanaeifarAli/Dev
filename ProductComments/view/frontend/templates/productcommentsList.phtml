@@ -16,12 +16,12 @@
     </tr>
     <?php foreach ($block->getItems() as $item) : ?>
         <tr>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getproduct_comments_id())) ?></td>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getfirst_name())) ?></td>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getlast_name())) ?></td>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getEmail())) ?></td>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getComment())) ?></td>
-            <td><?= $validators = $item->escapeHtml(json_encode($item->getCreatedAt())) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getproduct_comments_id()) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getfirst_name()) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getlast_name()) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getEmail()) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getComment()) ?></td>
+            <td><?= $validators = $block->escapeHtml($item->getCreatedAt()) ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
