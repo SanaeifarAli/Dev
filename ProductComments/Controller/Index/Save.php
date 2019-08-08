@@ -76,49 +76,6 @@ class Save extends Action
                     ->save();
                 $this->messageManager->addSuccessMessage('Your Comment Saved');
                 $this->dataPersistor->clear('product_comments');
-                //---------SEND MAIL
-
-
-                /*                $receiverName = $post['first_name'].' '.$post['last_name'];
-                $receiverEmail = $post['email'];
-                $comment = $post['comment'];
-                $store = $this->_storeManager->getStore();
-                $templateParams = ['store' => $store, 'comment' => $comment, 'administrator_name' => $receiverName];
-                $transport = $this->_transportBuilder->setTemplateIdentifier(
-                    'productComments_email_template'
-                )->setTemplateOptions(
-                    ['area' => 'frontend', 'store' => $store->getId()]
-                )->addTo(
-                    $receiverEmail,
-                    $receiverName
-                )->setTemplateVars(
-                    $templateParams
-                )->setFrom(
-                    'general'
-                )->getTransport();
-                try {
-                    $transport->sendMessage();
-                } catch (\Exception $e) {
-                    $this->messageManager->addErrorMessage($e->getMessage());
-                }
-*/
-                /*$store = $this->_storeManager->getStore()->getId();
-                $transport = $this->_transportBuilder->setTemplateIdentifier('productComments_email_template')
-                    ->setTemplateOptions([
-                        'area' => 'frontend',
-                        'store' => $store
-                    ])
-                    ->setTemplateVars(
-                        [
-                    //        'store' => $this->_storeManager->getStore(),
-                        ]
-                    )
-                    ->setFrom(array('email' => 'mailhog1@example1.com', 'name' => 'SenderName'))
-                    ->addTo('sanaeifara@yahoo.com', 'Customer Name')
-                    ->getTransport();
-                $transport->sendMessage();*/
-
-                //------------------
                 $resultRedirect = $this->resultRedirectFactory->create();
                 $resultRedirect->setRefererOrBaseUrl();
 
