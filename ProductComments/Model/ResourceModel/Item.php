@@ -8,6 +8,7 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Item extends AbstractDb
 {
+    private $_eventManager;
     /**
      * Initialize resource model
      * @return void
@@ -17,6 +18,11 @@ class Item extends AbstractDb
         $this->_init('product_comments', 'product_comments_id');
     }
 
+    /**
+     * @param AbstractModel $object
+     * @return $this|AbstractDb
+     * @throws LocalizedException
+     */
     protected function _beforeSave(AbstractModel $object)
     {
         $first_name=$object->getFirst_name();
