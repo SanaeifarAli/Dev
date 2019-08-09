@@ -22,10 +22,12 @@ class DataProvider extends AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param CollectionFactory      $contactCollectionFactory
+     * @param CollectionFactory $contactCollectionFactory
      * @param DataPersistorInterface $dataPersistor
-     * @param array                  $meta
-     * @param array                  $data
+     * @param HttpAlias $request
+     * @param ScopeConfigInterface $scopeConfig
+     * @param array $meta
+     * @param array $data
      */
     public function __construct(
         $name,
