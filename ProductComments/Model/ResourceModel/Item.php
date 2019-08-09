@@ -8,7 +8,6 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Item extends AbstractDb
 {
-    private $_eventManager;
     /**
      * Initialize resource model
      * @return void

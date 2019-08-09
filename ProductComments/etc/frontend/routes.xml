@@ -4,5 +4,8 @@
         <route id="productcomments" frontName="productcomments">
             <module name="Dev_ProductComments" />
         </route>
+        <route id="commentList" frontName="commentList">
+            <module name="Dev_ProductComments" />
+        </route>
     </router>
 </config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<routes>
+    <route url="/V1/commentList/:productId" method="GET">
+        <service class="Dev\ProductComments\Api\ItemRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>
