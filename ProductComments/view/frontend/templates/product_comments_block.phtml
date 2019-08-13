@@ -1,7 +1,9 @@
 <?php
 use Magento\Framework\App\ObjectManager;
 
-$product=$block->getCurrentProduct();
+
+$viewModel = $block->getViewModel();
+$product=$viewModel->getCurrentProduct();
 $productName = $product->getName();
 $objectManager = ObjectManager::getInstance();
 $product = $objectManager->create(Magento\Catalog\Model\Product::class)->load($product->getId());
@@ -11,14 +13,14 @@ if ($product->getData('product_comments')!='yes') {
 }
 
 ?>
-<form data-mage-init='{"validation":{}}'  action="<?= $validators = $block->escapeHtml($block->getFormAction()) ?>" method="post" class="review-form" id="product-comments">
+<form data-mage-init='{"validation":{}}'  action="<?= $validators = $block->escapeHtml($viewModel->getFormAction()) ?>" method="post" class="review-form" id="product-comments">
     <fieldset class="fieldset review-fieldset" data-hasrequired="* Rquired Fields" >
         <legend class="legend review-legend">
             <strong>Product Comments</strong>
         </legend>
         <br>
 
-        <?php foreach ($block->getItems() as $item) : ?>
+        <?php foreach ($viewModel->getItems() as $item) : ?>
             <span><?= $block->escapeHtml($item->getCreatedAt()) ?></span>
             <span style="padding-left: 100px"><b><?= $validators = $block->escapeHtml($item->getfirst_name() . '&nbsp;&nbsp;' . $item->getlast_name()) ?></b></span>
             <div style="background-color: #F5F5F5; margin:10px; padding-left: 10px; padding-right: 10px; padding-top: 0px; padding-bottom: 10px;"><?= $validators = $block->escapeHtml($item->getComment()) ?></div>
@@ -65,7 +67,7 @@ if ($product->getData('product_comments')!='yes') {
     </fieldset>
     <div class="actions-toolbar review-form-actions">
         <div class="primary cations-primary">
-            <input type="hidden" name="entity_id" id="entity_id_field" value="<?= $validators = $block->escapeHtml($block->getCurrentProduct()->getId()) ?>">
+            <input type="hidden" name="entity_id" id="entity_id_field" value="<?= $validators = $block->escapeHtml($viewModel->getCurrentProduct()->getId()) ?>">
             <button type="submit" class="action submit primary">
                 <span>Submit Comment</span>
             </button>

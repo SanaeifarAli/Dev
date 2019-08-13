@@ -1,3 +1,6 @@
+<?php
+$viewModel = $block->getViewModel();
+?>
 <style>
     table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 5px;}
     td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
@@ -14,7 +17,7 @@
         <th>Comment</th>
         <th>Date</th>
     </tr>
-    <?php foreach ($block->getItems() as $item) : ?>
+    <?php foreach ($viewModel->getItems() as $item) : ?>
         <tr>
             <td><?= $validators = $block->escapeHtml($item->getproduct_comments_id()) ?></td>
             <td><?= $validators = $block->escapeHtml($item->getfirst_name()) ?></td>
