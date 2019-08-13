@@ -1,20 +1,15 @@
 <?php
-use Magento\Framework\App\ObjectManager;
-
 
 $viewModel = $block->getViewModel();
 $product=$viewModel->getCurrentProduct();
-$productName = $product->getName();
-$objectManager = ObjectManager::getInstance();
-$product = $objectManager->create(Magento\Catalog\Model\Product::class)->load($product->getId());
 
-if ($product->getData('product_comments')!='yes') {
+if ($viewModel->getEnableComments($product->getId())!='yes') {
     return;
 }
 
 ?>
 <form data-mage-init='{"validation":{}}'  action="<?= $validators = $block->escapeHtml($viewModel->getFormAction()) ?>" method="post" class="review-form" id="product-comments">
-    <fieldset class="fieldset review-fieldset" data-hasrequired="* Rquired Fields" >
+    <fieldset class="fieldset review-fieldset" data-hasrequired="* Required Fields" >
         <legend class="legend review-legend">
             <strong>Product Comments</strong>
         </legend>

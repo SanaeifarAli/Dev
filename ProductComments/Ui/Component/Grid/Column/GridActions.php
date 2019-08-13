@@ -1,7 +1,6 @@
 <?php
 namespace Dev\ProductComments\Ui\Component\Grid\Column;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Escaper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -27,6 +26,11 @@ class GridActions extends Column
     private $editUrl;
 
     /**
+     * @var Escaper
+     */
+    private $escaper;
+
+    /**
      * @param ContextInterface   $context
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface       $urlBuilder
@@ -38,12 +42,14 @@ class GridActions extends Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
         UrlInterface $urlBuilder,
+        Escaper $escaper,
         array $components = [],
         array $data = [],
         $editUrl = self::CMS_URL_PATH_EDIT
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->editUrl = $editUrl;
+        $this->escaper = $escaper;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -66,8 +72,7 @@ class GridActions extends Column
                         ),
                         'label' => __('Edit')
                     ];
-                    //$title = $this->getEscaper()->escapeHtml($item['last_name']);
-                    $title = ObjectManager::getInstance()->get(Escaper::class)->escapeHtml($item['last_name']);
+                    $title = $this->escaper->escapeHtml($item['last_name']);
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(
                             self::CMS_URL_PATH_DELETE,
