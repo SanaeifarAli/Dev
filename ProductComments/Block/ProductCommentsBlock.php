@@ -54,6 +54,6 @@ class ProductCommentsBlock extends Template
      */
     public function getFormAction()
     {
-        return 'productcomments/index/save';
+        return 'product_comments/index/save';
     }
 }

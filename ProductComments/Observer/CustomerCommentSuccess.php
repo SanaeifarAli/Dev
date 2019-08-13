@@ -60,7 +60,7 @@ class CustomerCommentSuccess implements ObserverInterface
         $store = $this->storeManager->getStore();
         $templateParams = ['store' => $store, 'comment' => $comment, 'administrator_name' => $receiverName];
         $transport = $this->transportBuilder->setTemplateIdentifier(
-            'productComments_email_template'
+            'product_comments_email_template'
         )->setTemplateOptions(
             ['area' => 'frontend', 'store' => $store->getId()]
         )->addTo(

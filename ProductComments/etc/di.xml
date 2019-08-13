@@ -6,7 +6,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="productcomments_items_grid_data_source" xsi:type="string">Dev\ProductComments\Model\ResourceModel\Item\Grid\Collection</item>
+                <item name="product_comments_items_grid_data_source" xsi:type="string">Dev\ProductComments\Model\ResourceModel\Item\Grid\Collection</item>
             </argument>
         </arguments>
     </type>

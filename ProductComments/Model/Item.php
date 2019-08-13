@@ -32,7 +32,7 @@ class Item extends AbstractModel
     public function afterSave()
     {
         $this->_eventManager->dispatch(
-            'dev_productcomments_comment_email_event',
+            'dev_product_comments_comment_email_event',
             $this->getData()
         );
 

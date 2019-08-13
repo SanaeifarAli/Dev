@@ -6,7 +6,7 @@
 
     <body>
         <referenceContainer name="content">
-            <block class="Dev\ProductComments\Block\ProductCommentsBlock" name="productcomments" template="Dev_ProductComments::productcommentsList.phtml" />
+            <block class="Dev\ProductComments\Block\ProductCommentsBlock" name="product_comments" template="Dev_ProductComments::product_comments_list.phtml" />
         </referenceContainer>
     </body>
 

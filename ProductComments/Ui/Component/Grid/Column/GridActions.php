@@ -13,8 +13,8 @@ class GridActions extends Column
     /**
     * Url path
     */
-    const CMS_URL_PATH_EDIT = 'productcomments/item/edit';
-    const CMS_URL_PATH_DELETE = 'productcomments/item/delete';
+    const CMS_URL_PATH_EDIT = 'product_comments/item/edit';
+    const CMS_URL_PATH_DELETE = 'product_comments/item/delete';
 
     /**
      * @var UrlInterface

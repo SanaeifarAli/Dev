@@ -2,8 +2,8 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">productcomments_item_form.productcomments_item_form_data_source</item>
-            <item name="deps" xsi:type="string">productcomments_item_form.productcomments_item_form_data_source</item>
+            <item name="provider" xsi:type="string">product_comments_item_form.product_comments_item_form_data_source</item>
+            <item name="deps" xsi:type="string">product_comments_item_form.product_comments_item_form_data_source</item>
         </item>
 
         <item name="label" xsi:type="string" translate="true">Product Comments Form</item>
@@ -22,15 +22,15 @@
         </item>
     </argument>
 
-    <dataSource name="productcomments_item_form_data_source">
+    <dataSource name="product_comments_item_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Dev\ProductComments\Model\Item\DataProvider</argument>
-            <argument name="name" xsi:type="string">productcomments_item_form_data_source</argument>
+            <argument name="name" xsi:type="string">product_comments_item_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">product_comments_id</argument>
             <argument name="requestFieldName" xsi:type="string">product_comments_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="productcomments/item/save" />
+                    <item name="submit_url" xsi:type="url" path="product_comments/item/save" />
                 </item>
             </argument>
         </argument>

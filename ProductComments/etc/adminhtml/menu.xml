@@ -2,8 +2,8 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Dev_ProductComments::dev" title="Dev" translate="title" module="Dev_ProductComments" sortOrder="20" resource="Dev_ProductComments::productcomments"/>
-        <add id="Dev_ProductComments::productcomments" title="Product Comments" translate="title" module="Dev_ProductComments" sortOrder="10" resource="Dev_ProductComments::productcomments" parent="Dev_ProductComments::dev" action="productcomments"/>
-        <add id="Dev_ProductComments::productconfig" title="Active Comment" translate="title" module="Dev_ProductComments" sortOrder="10" resource="Dev_ProductComments::productcomments" parent="Dev_ProductComments::dev" action="catalog/product"/>
+        <add id="Dev_ProductComments::dev" title="Dev" translate="title" module="Dev_ProductComments" sortOrder="20" resource="Dev_ProductComments::product_comments"/>
+        <add id="Dev_ProductComments::product_comments" title="Product Comments" translate="title" module="Dev_ProductComments" sortOrder="10" resource="Dev_ProductComments::product_comments" parent="Dev_ProductComments::dev" action="product_comments"/>
+        <add id="Dev_ProductComments::product_config" title="Active Comment" translate="title" module="Dev_ProductComments" sortOrder="10" resource="Dev_ProductComments::product_comments" parent="Dev_ProductComments::dev" action="catalog/product"/>
     </menu>
 </config>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="dev_productcomments_comment_email_event">
-        <observer name="dev_productcomments_comment_email_observer" instance="Dev\ProductComments\Observer\CustomerCommentSuccess" />
+    <event name="dev_product_comments_comment_email_event">
+        <observer name="dev_product_comments_comment_email_observer" instance="Dev\ProductComments\Observer\CustomerCommentSuccess" />
     </event>
 </config>

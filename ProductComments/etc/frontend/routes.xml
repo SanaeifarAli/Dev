@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="productcomments" frontName="productcomments">
+        <route id="product_comments" frontName="product_comments">
             <module name="Dev_ProductComments" />
         </route>
         <route id="commentList" frontName="commentList">

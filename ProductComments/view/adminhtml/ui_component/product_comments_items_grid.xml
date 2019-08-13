@@ -2,10 +2,10 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">productcomments_items_grid.productcomments_items_grid_data_source</item>
-            <item name="deps" xsi:type="string">productcomments_items_grid.productcomments_items_grid_data_source</item>
+            <item name="provider" xsi:type="string">product_comments_items_grid.product_comments_items_grid_data_source</item>
+            <item name="deps" xsi:type="string">product_comments_items_grid.product_comments_items_grid_data_source</item>
         </item>
-        <item name="spinner" xsi:type="string">productcomments_items_columns</item>
+        <item name="spinner" xsi:type="string">product_comments_items_columns</item>
         <item name="buttons" xsi:type="array">
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
@@ -15,10 +15,10 @@
             </item>
         </item>
     </argument>
-    <dataSource name="productcomments_items_grid_data_source">
+    <dataSource name="product_comments_items_grid_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">productcomments_items_grid_data_source</argument>
+            <argument name="name" xsi:type="string">product_comments_items_grid_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
@@ -40,7 +40,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <!-- we put here the path to the element pfay_contact_ids of contacts_test_columns  element -->
-                    <item name="selectProvider" xsi:type="string">productcomments_items_grid.productcomments_items_grid.productcomments_items_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">product_comments_items_grid.product_comments_items_grid.product_comments_items_columns.ids</item>
                     <item name="displayArea" xsi:type="string">top</item>
                     <item name="indexField" xsi:type="string">product_comments_id</item>
                 </item>
@@ -82,12 +82,12 @@
             </action>
         </massaction>
     </listingToolbar>
-    <columns name="productcomments_items_columns">
+    <columns name="product_comments_items_columns">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="childDefaults" xsi:type="array">
                     <item name="fieldAction" xsi:type="array">
-                        <item name="provider" xsi:type="string">productcomments_items_grid.productcomments_items_grid.productcomments_items_columns.actions</item>
+                        <item name="provider" xsi:type="string">product_comments_items_grid.product_comments_items_grid.product_comments_items_columns.actions</item>
                         <item name="target" xsi:type="string">applyAction</item>
                         <item name="params" xsi:type="array">
                             <item name="0" xsi:type="string">view</item>
