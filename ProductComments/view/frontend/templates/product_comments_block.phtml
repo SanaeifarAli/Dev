@@ -17,8 +17,8 @@ if ($viewModel->getEnableComments($product->getId())!='yes') {
 
         <?php foreach ($viewModel->getItems() as $item) : ?>
             <span><?= $block->escapeHtml($item->getCreatedAt()) ?></span>
-            <span style="padding-left: 100px"><b><?= $validators = $block->escapeHtml($item->getfirst_name() . '&nbsp;&nbsp;' . $item->getlast_name()) ?></b></span>
-            <div style="background-color: #F5F5F5; margin:10px; padding-left: 10px; padding-right: 10px; padding-top: 0px; padding-bottom: 10px;"><?= $validators = $block->escapeHtml($item->getComment()) ?></div>
+            <span class="name"><b><?= $validators = $block->escapeHtml($item->getfirst_name() . '&nbsp;&nbsp;' . $item->getlast_name()) ?></b></span>
+            <div class="comment"><?= $validators = $block->escapeHtml($item->getComment()) ?></div>
 
         <?php endforeach; ?>
 

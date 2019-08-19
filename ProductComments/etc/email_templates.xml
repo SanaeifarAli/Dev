@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
-    <template id="product_comments_email_template" label="Comment Delivered Email" file="email_template.html" type="html" module="Dev_ProductComments" area="frontend"/>
+    <template id="product_comments_email_template" label="Comment Delivered Email" file="email-template.html" type="html" module="Dev_ProductComments" area="frontend"/>
 </config>

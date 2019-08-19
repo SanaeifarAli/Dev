@@ -1,0 +1,53 @@
+@font_family_table: arial, sans-serif;
+@background_color_table: #dddddd;
+
+table {
+    font-family: @font_family_table;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 5px;
+}
+
+td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    &:hover {
+        background-color: fadeout(#0f0, 90%);
+    }
+
+    &:nth-child(even) {
+        background-color: @background_color_table;
+
+        &:hover {
+            background-color: fadeout(@background_color_table, 50%);
+        }
+    }
+}
+
+.post-id {
+    width: 2%;
+}
+
+.post-name {
+    width: 30%;
+}
+
+.comment {
+    background-color: #f5f5f5;
+    margin: 10px;
+    padding: 10px;
+}
+
+.name {
+    padding-left: 100px;
+}
