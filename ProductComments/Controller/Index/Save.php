@@ -91,6 +91,14 @@ class Save extends Action
                 $resultRedirect->setRefererOrBaseUrl();
                 return $resultRedirect;
             }
+        } else {
+            $this->messageManager->addErrorMessage('No Value Found...');
+
+            $this->dataPersistor->set('product_comments', $this->getRequest()->getPostValue());
+
+            $resultRedirect = $this->resultRedirectFactory->create();
+            $resultRedirect->setRefererOrBaseUrl();
+            return $resultRedirect;
         }
     }
 }

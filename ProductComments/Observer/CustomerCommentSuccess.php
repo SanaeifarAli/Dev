@@ -1,8 +1,10 @@
 <?php
 namespace Dev\ProductComments\Observer;
 
+use Exception;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -49,7 +51,7 @@ class CustomerCommentSuccess implements ObserverInterface
     /**
      * @param Observer $observer
      * @return $this|void
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
     public function execute(Observer $observer)
     {
@@ -73,7 +75,7 @@ class CustomerCommentSuccess implements ObserverInterface
         )->getTransport();
         try {
             $transport->sendMessage();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         }
         return $this;

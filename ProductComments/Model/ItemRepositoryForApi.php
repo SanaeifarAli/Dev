@@ -1,6 +1,7 @@
 <?php
 namespace Dev\ProductComments\Model;
 
+use Dev\ProductComments\Api\Data\ItemInterface;
 use Dev\ProductComments\Api\ItemRepositoryInterface;
 use Dev\ProductComments\Model\ResourceModel\Item\CollectionFactory as CollectionFactory;
 
@@ -19,7 +20,7 @@ class ItemRepositoryForApi implements ItemRepositoryInterface
 
     /**
      * @param integer $productId
-     * @return \Dev\ProductComments\Api\Data\ItemInterface[]
+     * @return ItemInterface[]
      */
     public function getList($productId)
     {

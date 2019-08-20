@@ -50,11 +50,9 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
 
         if ($data) {
+            $id = $data['product_comments_id'];
+            $comment = $this->itemFactory->create()->load($id);
             try {
-                $id = $data['product_comments_id'];
-
-                $comment = $this->itemFactory->create()->load($id);
-
                 $data = array_filter(
                     $data,
                     function ($value) {

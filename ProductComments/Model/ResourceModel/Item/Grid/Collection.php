@@ -18,13 +18,12 @@ class Collection extends SearchResult
 
     /**
      * Collection constructor.
-     *
-     * @param  EntityFactory $entityFactory
-     * @param  Logger        $logger
-     * @param  FetchStrategy $fetchStrategy
-     * @param  EventManager  $eventManager
-     * @param  string        $mainTable
-     * @param  string        $resourceModel
+     * @param EntityFactory $entityFactory
+     * @param Logger $logger
+     * @param FetchStrategy $fetchStrategy
+     * @param EventManager $eventManager
+     * @param string $mainTable
+     * @param string $resourceModel
      * @throws LocalizedException
      */
     public function __construct(

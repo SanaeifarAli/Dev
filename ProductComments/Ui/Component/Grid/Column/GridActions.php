@@ -31,12 +31,14 @@ class GridActions extends Column
     private $escaper;
 
     /**
-     * @param ContextInterface   $context
+     * GridActions constructor.
+     * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param UrlInterface       $urlBuilder
-     * @param array              $components
-     * @param array              $data
-     * @param string             $editUrl
+     * @param UrlInterface $urlBuilder
+     * @param Escaper $escaper
+     * @param array $components
+     * @param array $data
+     * @param string $editUrl
      */
     public function __construct(
         ContextInterface $context,
