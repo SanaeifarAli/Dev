@@ -86,7 +86,7 @@ Your best friend in this journey - https://devdocs.magento.com/
 ## Usage
 
 **Frontend**
-- http://yourDomain/productcomments
+- http://yourDomain/product_comments
 
 ** ... **
 - ...
