@@ -92,7 +92,7 @@ Your best friend in this journey - https://devdocs.magento.com/
 - ...
 
 **Admin**
-- http://yourDomain/admin/productcomments
+- http://yourDomain/admin/product_comments
 
 ## Settings
 
